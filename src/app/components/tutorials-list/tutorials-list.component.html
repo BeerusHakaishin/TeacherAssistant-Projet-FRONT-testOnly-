@@ -49,6 +49,10 @@
         <label><strong>Statut:</strong></label>
         {{ currentTutorial.published ? "Published" : "Pending" }}
       </div>
+      <div>
+        <label><strong>Favoris:</strong></label>
+        {{ currentTutorial.favorite ? "Favoris" : "Non-Favoris" }}
+      </div>
 
       <a class="badge badge-warning" routerLink="/tutorials/{{ currentTutorial.id }}">
         Modifier

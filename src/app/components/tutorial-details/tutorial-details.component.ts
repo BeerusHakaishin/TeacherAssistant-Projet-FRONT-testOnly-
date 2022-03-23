@@ -44,7 +44,8 @@ export class TutorialDetailsComponent implements OnInit {
     const data = {
       title: this.currentTutorial.title,
       description: this.currentTutorial.description,
-      published: status
+      published: status,
+      favorite: status
     };
 
     this.message = '';
@@ -53,8 +54,32 @@ export class TutorialDetailsComponent implements OnInit {
       .subscribe(
         response => {
           this.currentTutorial.published = status;
+          this.currentTutorial.favorite = status;
           console.log(response);
           this.message = response.message ? response.message : 'Le statut a bien été modifié avec succès!';
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  updateFavorite(status: boolean): void {
+    const data = {
+      title: this.currentTutorial.title,
+      description: this.currentTutorial.description,
+      favorite: status,
+      published: status,
+    };
+
+    this.message = '';
+
+    this.tutorialService.update(this.currentTutorial.id, data)
+      .subscribe(
+        response => {
+          this.currentTutorial.favorite = status;
+          this.currentTutorial.favorite = status;
+          console.log(response);
+          this.message = response.message ? response.message : 'Tuto ajouté aux favoris avec succès!';
         },
         error => {
           console.log(error);
@@ -86,5 +111,4 @@ export class TutorialDetailsComponent implements OnInit {
           console.log(error);
         });
   }
-
 }

@@ -27,6 +27,11 @@
         <label><strong>Statut:</strong></label>
         {{ currentTutorial.published ? "Published" : "Pending" }}
       </div>
+
+      <div class="form-group">
+        <label><strong>Favoris:</strong></label>
+        {{ currentTutorial.favorite ? "Favoris" : "Non-Favori" }}
+      </div>
     </form>
 
     <button
@@ -43,6 +48,23 @@
     >
       Publié
     </button>
+
+    <!-- d -->
+    <button
+    class="badge badge-primary mr-2"
+    *ngIf="currentTutorial.favorite"
+    (click)="updateFavorite(false)"
+  >
+    Non-favoris
+  </button>
+  <button
+    *ngIf="!currentTutorial.favorite"
+    class="badge badge-primary mr-2"
+    (click)="updateFavorite(true)"
+  >
+    Favoris
+  </button>
+    <!-- d -->
 
     <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
       Supprimer
