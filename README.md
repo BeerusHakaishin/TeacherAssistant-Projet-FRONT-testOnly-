@@ -1,2 +1,2 @@
 
-___Juste un sample pour les tests de mon back___
+___Juste un template pour les tests de mon back___
